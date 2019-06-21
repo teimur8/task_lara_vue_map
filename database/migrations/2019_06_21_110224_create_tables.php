@@ -26,10 +26,7 @@ class CreateTables extends Migration
             $table->foreign("region_id")->references("id")->on("regions");
         });
         
-        Schema::create('address', function(Blueprint $table){
-            $table->bigIncrements('id');
-            $table->string('name');
-        });
+
         
         
         Schema::create('centers', function(Blueprint $table){
@@ -61,19 +58,21 @@ class CreateTables extends Migration
             $table->string('latitude');
             $table->string('longitude');
             $table->unsignedInteger('capacity')->default(0);
+            $table->unsignedInteger('zoom')->default(0);
+    
+            $table->foreign("center_id", 'maps_center_id')->references("id")->on("centers");
         });
     
-        Schema::create('centers_address', function(Blueprint $table){
-            $table->unsignedBigInteger("center_id");
-            $table->unsignedBigInteger("address_id");
+        Schema::create('address', function(Blueprint $table){
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->unsignedBigInteger('center_id');
+    
+            $table->foreign("center_id", 'address_center_id')->references("id")->on("centers");
         });
     
-        Schema::create('centers_map', function(Blueprint $table){
-            $table->unsignedBigInteger("center_id");
-            $table->unsignedBigInteger("map_id");
-        });
-        
 
+    
         
     }
     
