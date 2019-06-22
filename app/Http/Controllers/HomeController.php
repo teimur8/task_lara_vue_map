@@ -2,27 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Center;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        return view('home');
+        $items = Center::with([
+            'region','city','map','address'
+        ])->get();
+        
+        return view('home', compact('items'));
+    }
+    
+    public function show(Center $center)
+    {
+        $center = Center::with(['region','city','map','address'])->where('id', $center->id)->first();
+        return view("show", compact('center'));
     }
 }

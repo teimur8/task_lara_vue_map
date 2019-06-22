@@ -110,6 +110,8 @@ class FileLoad extends Command
         $map->longitude = $matches[0][1];
         $map->capacity = $capacity;
         $map->zoom = explode(":", $on_map)[1] ?? 15;
+        $map->center_id = $center->id;
+        $map->save();
         
         // address
         Address::firstOrCreate(['name' => $address_1, 'center_id' => $center->id]);

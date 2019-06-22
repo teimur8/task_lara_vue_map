@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        \Illuminate\Support\Facades\DB::unprepared(file_get_contents("database/seeds/sql/backup.sql"));
         // $this->call(UsersTableSeeder::class);
     }
 }

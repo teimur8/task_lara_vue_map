@@ -2,9 +2,20 @@
 
 
 
+## Установка
 ```bash
-
 php artisan migrate
-php artisan file:load файл.xls
+php artisan db:seed
 
+# чистая установка
+#php artisan file:load файл.xls
+#php artisan voyager:install
 ```
+
+## Админка 
+/login
+login: `admin@admin.com`
+password: `password`
+
+
+/admin/centers - можно подредактировать центры

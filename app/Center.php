@@ -18,4 +18,10 @@ class Center extends Model
         , 'devices'
         , 'shifts'
     ];
+    
+    public function region(){ return $this->belongsTo(Region::class);}
+    public function city(){ return $this->belongsTo(City::class);}
+    public function address(){ return $this->hasMany(Address::class);}
+    public function map(){ return $this->hasMany(Map::class, 'center_id', 'id');}
+    
 }
