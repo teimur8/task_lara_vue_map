@@ -12,10 +12,6 @@ php artisan db:seed
 #php artisan voyager:install
 ```
 
-## Админка 
-/login
-login: `admin@admin.com`
-password: `password`
-
-
-/admin/centers - можно подредактировать центры
+xadupa@kikoxltd.com
+hB79@XF8
+hB79@XF8!
